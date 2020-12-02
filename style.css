@@ -13,5 +13,6 @@
 .main {
   align-self: center;
   justify-self: center;
+  grid-area: main;
 }
 
