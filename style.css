@@ -2,6 +2,7 @@
 html, body {
     margin: 0;
     height: 100%;
+    background-color: #721410;
     background-image: url("P5_Morgana_character_artwork.png");
 }
 
@@ -21,7 +22,7 @@ html, body {
   grid-area: main;
   align-self: center;
   justify-self: center;
-  color: green;
+  color: #107214;
   font-size: 10em;
   text-align: center;
   font: "Liberation Sans";
