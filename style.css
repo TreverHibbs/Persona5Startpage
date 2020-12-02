@@ -1,5 +1,12 @@
 
+html, body {
+    margin: 0;
+    height: 100%;
+    background-image: url("P5_Morgana_character_artwork.png");
+}
+
 .grid-container {
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -11,8 +18,12 @@
 }
 
 .main {
+  grid-area: main;
   align-self: center;
   justify-self: center;
-  grid-area: main;
+  color: green;
+  font-size: 10em;
+  text-align: center;
+  font: "Liberation Sans";
 }
 
