@@ -1,9 +1,14 @@
+@font-face {
+  font-family: myFont;
+  src: url(./fonts/ttf/Hack-Regular.ttf);
+}
 
 html, body {
     margin: 0;
     height: 100%;
     background-color: #721410;
     background-image: url("P5_Morgana_character_artwork.png");
+    font-family: myFont, "Liberaion Sans", sans-serif;
 }
 
 .grid-container {
@@ -23,8 +28,7 @@ html, body {
   align-self: center;
   justify-self: center;
   color: #107214;
-  font-size: 10em;
+  font-size: 8em;
   text-align: center;
-  font: "Liberation Sans";
 }
 
