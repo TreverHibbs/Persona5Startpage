@@ -10,11 +10,11 @@ function cursorPoint(evt){
   return pt.matrixTransform(mainSvg.getScreenCTM().inverse());
 }
 
-//mainSvg.addEventListener('mousemove',function(evt){
-//  const loc = cursorPoint(evt);
-//  console.debug("mouse x coord: ", loc.x);
-//  console.debug("mouse y coord: ", loc.y);
-//},false);
+mainSvg.addEventListener('mousemove',function(evt){
+  const loc = cursorPoint(evt);
+  console.debug("mouse x coord: ", loc.x);
+  console.debug("mouse y coord: ", loc.y);
+},false);
 
 //animate tsukishima
 const imageTsukishima = document.getElementById("tsukishima");
