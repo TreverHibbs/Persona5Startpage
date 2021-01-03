@@ -34,4 +34,10 @@ html, body {
   height: auto;
 }
 
+.link-image {
+  transform-origin: 85% 60%;
+}
+
+/* link images */
+
 /*# sourceMappingURL=style.css.map */
