@@ -4,31 +4,44 @@
 }
 
 html, body {
+/*  background: no-repeat center url("images/map.png"); */
+    background-color: #de0916;
+    font-family: myFont, "Liberaion Sans", sans-serif;
     margin: 0;
     height: 100%;
-    background-color: #721410;
-    background-image: url("images/P5_Morgana_character_artwork.png");
-    font-family: myFont, "Liberaion Sans", sans-serif;
 }
 
 .grid-container {
-  height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    ". . ."
-    ". main ."
-    ". . .";
+    ".";
+  justify-items: center;
+  width: 100%;
+  /* 1500 because that is the width of the image file */
+  height: 100%;
 }
 
-.main {
-  grid-area: main;
-  align-self: center;
-  justify-self: center;
-  color: #107214;
-  font-size: 8em;
-  text-align: center;
+.image-container {
+  background: no-repeat center/1400px url("images/map.png");
+  width: 1400px;
+  height: 100%;
+}
+
+.reddit-button {
+  background: no-repeat center url("images/tsukishima.png");
+  width: 111px;
+  height: 138px; 
+  border: none;
+  position: relative;
+  left: 81.5%;
+  top: 50%;
+}
+
+.reddit-button:hover {
+  transform: scale(1.2);
+  transition: all 1s;
 }
 
