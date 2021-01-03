@@ -20,17 +20,14 @@ function cursorPoint(evt){
 const imageTsukishima = document.getElementById("tsukishima");
 
 imageTsukishima.addEventListener('mouseover', (evt) => {
+  targets: imageTsukishima,
   anime({
     targets: imageTsukishima,
-    scale: 0.9
-  });
-  return;
-});
-
-imageTsukishima.addEventListener('mouseout', (evt) => {
-  anime({
-    targets: imageTsukishima,
-    scale: 1
+    keyframes: [
+      {scale: 0.95},
+      {scale: 1}
+    ],
+    easing: 'easeOutElastic(1, .8)',
   });
   return;
 });
