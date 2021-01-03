@@ -2,12 +2,13 @@
   font-family: myFont;
   src: url(./fonts/ttf/Hack-Regular.ttf);
 }
+
 html, body {
-  /*  background: no-repeat center url("images/map.png"); */
-  background-color: #de0916;
-  font-family: myFont, "Liberaion Sans", sans-serif;
-  margin: 0;
-  height: 100%;
+/*  background: no-repeat center url("images/map.png"); */
+    background-color: #de0916;
+    font-family: myFont, "Liberaion Sans", sans-serif;
+    margin: 0;
+    height: 100%;
 }
 
 .grid-container {
@@ -15,7 +16,8 @@ html, body {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
-  grid-template-areas: ".";
+  grid-template-areas:
+    ".";
   justify-items: center;
   width: 100%;
   /* 1500 because that is the width of the image file */
@@ -30,4 +32,3 @@ html, body {
   max-width: 1500px;
 }
 
-/*# sourceMappingURL=style.css.map */
