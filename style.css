@@ -23,11 +23,15 @@ html, body {
 }
 
 .svg {
-  height: 90%;
-  width: 90%;
+  height: 900px;
+  width: 1450px;
   place-self: center;
-  background: no-repeat center url("images/map.png");
   max-width: 1500px;
+}
+
+.map-image {
+  width: 1450px;
+  height: auto;
 }
 
 /*# sourceMappingURL=style.css.map */
