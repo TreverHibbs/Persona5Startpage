@@ -35,61 +35,162 @@ const placeCursor = (x, y, width=130, height=160) => {
   const cursorContainer = document.getElementById("cursor-container");
   const cursorBlue = document.getElementById("cursor-blue");
   const cursorRed = document.getElementById("cursor-red");
+  
+  cursorBlue.remove();
+  cursorRed.remove();
 
   //==CURSOR CONFIG==//
-  const corner4Area = [34, 15];
+  const cornerArea = [34,15];
+  const corner4Area = cornerArea;
   //subtract width of area by half the width of the cursor area
   //every diamond corner area will have dimension 34px,15px
   //874 454 topleft coordinate of corner four area
-  const corner4LeftCorner = [x, y+40];
+  /*blue polygon corner labels
+   *  1*------*2
+   *   |      |
+   *   |      |
+   *   |      |      
+   *  4*------*3
+  */
 
-  //calculate array for possible x coordinates of corner 4
-  const corner4AreaXaxisArray = [corner4LeftCorner[0]];
-  for(let i = 0; i < corner4Area[0]; i++){
-    corner4AreaXaxisArray.push(corner4LeftCorner[0]+i+1);
-  }
-  //calculate array for possible y coordinates of corner 4
-  const corner4AreaYaxisArray = [corner4LeftCorner[1]];
-  for(let i = 0; i < corner4Area[1]; i++){
-    corner4AreaYaxisArray.push(corner4LeftCorner[1]+i+1);
-  }
+  /*red polygon corner labels
+   *      *2
+   *     / \
+   *    /   \
+   *   *1    *3
+   *    \   /
+   *     \ /
+   *      *4
+  */
 
-  const corner4Points = [];
-  const corner4PointValues = [];
-  for(let i = 0; i < 10; i++){
-    //calulate one of the coordinates
-    const point = [];
-    point[0] = corner4AreaXaxisArray[Math.floor(Math.random() * corner4AreaXaxisArray.length)];
-    point[1] = corner4AreaYaxisArray[Math.floor(Math.random() * corner4AreaYaxisArray.length)];
-    corner4Points.push(point);    
+  const redCorner4 = [x, y+(height/4)];
+  const redCorner3 = [x+(width/2), y-20];
+  const redCorner2 = [x, y-(height/4)];
+  const redCorner1 = [x-(width/2)-30, y-10];
 
-    const newValue = { 
-      value: '563,434 654,392 726,438 ' + 
-        point[0] + ',' + point[1]
+  const blueCorner4 = [x-(width/2)-15, y+(height/4)-20];
+  const blueCorner3 = [x+(width/2)-5, y+(height/4)-20];
+  const blueCorner2 = [x+(width/2)-15, y-(height/4)+10];
+  const blueCorner1 = [x-(width/2), y-(height/4)];
+
+  const CalculateCornerAreaArrays = (corner) => {
+    //calculate array for possible x coordinates of corner
+    const cornerAreaXaxisArray = [corner[0]];
+    for(let i = 0; i < cornerArea[0]; i++){
+      cornerAreaXaxisArray.push(corner[0]+i+1);
     }
-    corner4PointValues.push(newValue);
- 
+    //calculate array for possible y coordinates of corner
+    const cornerAreaYaxisArray = [corner[1]];
+    for(let i = 0; i < cornerArea[1]; i++){
+      cornerAreaYaxisArray.push(corner[1]+i+1);
+    }
+    return(
+      {
+        XaxisArray: cornerAreaXaxisArray,
+        YaxisArray: cornerAreaYaxisArray,
+      }
+    )
   }
 
-  cursorBlue.setAttribute('points', '558,403 710,414 718,460 598,464');
-  cursorBlue.setAttribute('visibility', 'visible');
-  cursorRed.setAttribute('points',
-    '563,434 654,392 726,438 ' +
-    corner4Points[0][0] + ',' + corner4Points[0][1]
-  );
-  cursorRed.setAttribute('visibility','visible');
+  const redCornerArea4 = CalculateCornerAreaArrays(redCorner4);
+  const redCornerArea3 = CalculateCornerAreaArrays(redCorner3);
+  const redCornerArea2 = CalculateCornerAreaArrays(redCorner2);
+  const redCornerArea1 = CalculateCornerAreaArrays(redCorner1);
+
+  const blueCornerArea4 = CalculateCornerAreaArrays(blueCorner4);
+  const blueCornerArea3 = CalculateCornerAreaArrays(blueCorner3);
+  const blueCornerArea2 = CalculateCornerAreaArrays(blueCorner2);
+  const blueCornerArea1 = CalculateCornerAreaArrays(blueCorner1);
+
+
+  const pickRandomPoints = (cornerArea4, cornerArea3, cornerArea2, cornerArea1) => {
+    const cornerPointValues = [];
+    for(let i = 0; i < 10; i++){
+      //calulate one of the coordinates
+      const point4 = [];
+      const point3 = [];
+      const point2 = [];
+      const point1 = [];
+      point4[0] = cornerArea4.XaxisArray[Math.floor(Math.random() * cornerArea4.XaxisArray.length)];
+      point4[1] = cornerArea4.YaxisArray[Math.floor(Math.random() * cornerArea4.YaxisArray.length)];
+      point3[0] = cornerArea3.XaxisArray[Math.floor(Math.random() * cornerArea3.XaxisArray.length)];
+      point3[1] = cornerArea3.YaxisArray[Math.floor(Math.random() * cornerArea3.YaxisArray.length)];
+      point2[0] = cornerArea2.XaxisArray[Math.floor(Math.random() * cornerArea2.XaxisArray.length)];
+      point2[1] = cornerArea2.YaxisArray[Math.floor(Math.random() * cornerArea2.YaxisArray.length)];
+      point1[0] = cornerArea1.XaxisArray[Math.floor(Math.random() * cornerArea1.XaxisArray.length)];
+      point1[1] = cornerArea1.YaxisArray[Math.floor(Math.random() * cornerArea1.YaxisArray.length)];
+
+      if(i == 1){
+        // Add a array of two strings as the first value in the array
+        // this ensures that the loop is smooth
+        // the loop will start with the first array etnry and then all
+        // subsequent loops will ues the second.
+        const newValue = {
+          value: [ cornerPointValues[0].value, 
+            point1[0] + ',' + point1[1] + ' ' + 
+            point2[0] + ',' + point2[1]  + ' ' + 
+            point3[0] + ',' + point3[1] + ' ' + 
+            point4[0] + ',' + point4[1]
+          ] 
+        }
+        cornerPointValues[0] = newValue;
+      }else{
+        const newValue = { 
+          value: point1[0] + ',' + point1[1] + ' ' + 
+            point2[0] + ',' + point2[1]  + ' ' + 
+            point3[0] + ',' + point3[1] + ' ' + 
+            point4[0] + ',' + point4[1] 
+        }
+        cornerPointValues.push(newValue);
+      }
+ 
+    }
+    //push first to last for smooth looping see docs on polygon morphing for
+    //anime.js.
+    cornerPointValues.push(cornerPointValues[0].value[0]);
+    return(cornerPointValues);
+  }
+
+  const redCornerPointValues = pickRandomPoints(redCornerArea4, redCornerArea3, redCornerArea2, redCornerArea1);
+  const blueCornerPointValues = pickRandomPoints(blueCornerArea4, blueCornerArea3, blueCornerArea2, blueCornerArea1);
+
+  //create corsor polygone elements with initial point
+  const blueCursor = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+  const redCursor = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+
+  blueCursor.setAttribute('id', 'cursor-blue');
+  redCursor.setAttribute('id', 'cursor-red');
+
+  blueCursor.setAttribute('class', 'cursor cursor-blue');
+  redCursor.setAttribute('class', 'cursor cursor-red');
+
+  blueCursor.setAttribute('points', blueCornerPointValues[0].value);
+  redCursor.setAttribute('points', redCornerPointValues[0].value);
+  
+  blueCursor.setAttribute('fill', '#09fffb');
+  redCursor.setAttribute('fill', "#ff110e");
+
+  cursorContainer.appendChild(blueCursor);
+  cursorContainer.appendChild(redCursor);
 
   //==ANIMATE==\\
-  console.debug('corner4PointValues', corner4PointValues);
+  console.debug('redCornerPointValues', redCornerPointValues);
   anime({
     targets: '#cursor-red',
-    points: corner4PointValues,
+    points: redCornerPointValues,
     easing: 'easeOutQuad',
-    duration: 8000,
+    duration: 2000,
     loop: true
   })
 
-
+  console.debug('blueCornerPointValues', blueCornerPointValues);
+  anime({
+    targets: '#cursor-blue',
+    points: blueCornerPointValues,
+    easing: 'easeOutQuad',
+    duration: 2000,
+    loop: true
+  })
 }
 
 placeCursor(658,432);
