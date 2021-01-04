@@ -38,8 +38,15 @@ $image-width: 1450px;
   height: auto;
 }
 
+.animated-cursor-container {
+  isolation: isolate;
+}
+.cursor {
+  mix-blend-mode: darken;
+}
+
 /* link images */
 #tsukishima {
-
+  transform-origin: 85% 60%;
 }
 

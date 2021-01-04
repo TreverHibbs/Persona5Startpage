@@ -10,24 +10,12 @@
       <svg id="main-svg" class="svg">
         <image class="map-image" href="images/map.png"/>
         <image class="link-image" id="tsukishima" href="images/tsukishima.png" x=1185 y=478 />
-        <mask id="blue-poly-mask">
-          <!-- Everything under a white pixel will be visible -->
-          <rect x="0" y="0" width="150" height="122" fill="white" />
-
-          <!-- Everything under a black pixel will be invisible -->
-          <polygon points="29,33 66,122 150,54" fill="black" />
-        </mask>
-        <mask id="red-poly-mask">
-          <!-- Everything under a white pixel will be visible -->
-          <rect x="0" y="0" width="150" height="122" fill="white" />
-
-          <!-- Everything under a black pixel will be invisible -->
-          <polygon points="10,110 110,110 110,10" fill="black" />
-        </mask>
-        <polygon points="10,110 110,110 110,10" fill="blue" mask="url(#blue-poly-mask)" />
-        <polygon points="29,33 66,122 150,54" fill="black" />
-        <polygon points="29,33 66,122 150,54" fill="red" mask="url(#red-poly-mask)" />
-
+        <g id="cursor-container" class="animated-cursor-container">
+          <polygon id="cursor-blue" class="cursor cursor-blue" points="10,110 110,110 110,10" 
+          fill="#09fffb" visibility=hidden />
+          <polygon id="cursor-red" class="cursor cursor-red" points="29,33 66,122 150,54" 
+          fill="#ff110e" visibility=hidden />
+        </g>
       </svg>
     </div>
   </body>

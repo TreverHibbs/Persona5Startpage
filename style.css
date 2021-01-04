@@ -34,10 +34,17 @@ html, body {
   height: auto;
 }
 
-.link-image {
-  transform-origin: 85% 60%;
+.animated-cursor-container {
+  isolation: isolate;
+}
+
+.cursor {
+  mix-blend-mode: darken;
 }
 
 /* link images */
+#tsukishima {
+  transform-origin: 85% 60%;
+}
 
 /*# sourceMappingURL=style.css.map */
