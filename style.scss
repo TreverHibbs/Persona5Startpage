@@ -5,7 +5,7 @@
 
 html, body {
 /*  background: no-repeat center url("images/map.png"); */
-    background-color: #de0916;
+    //background-color: #de0916;
     font-family: myFont, "Liberaion Sans", sans-serif;
     margin: 0;
     height: 100%;
@@ -41,20 +41,21 @@ $image-width: 1450px;
 .animated-cursor-container {
   isolation: isolate;
 }
+
 #visible-cursor-container {
   isolation: isolate;
 }
 
 .cursor {
-  mix-blend-mode: darken;
+//  mix-blend-mode: darken;
 }
 
 
 .label {
+  visibility: hidden;
 }
 
 .label-content {
-  visibility: hidden;
   mix-blend-mode: difference;
 }
 

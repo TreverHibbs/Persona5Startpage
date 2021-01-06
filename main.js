@@ -17,27 +17,28 @@ mainSvg.addEventListener('click',function(evt){
 },false);
 
 //animate tsukishima
-const imageTsukishima = document.getElementById("tsukishima");
-
-imageTsukishima.addEventListener('mouseover', (evt) => {
-  anime({
-    targets: imageTsukishima,
-    keyframes: [
-      {scale: 0.95},
-      {scale: 1}
-    ],
-    easing: 'easeOutElastic(1, .8)',
-  });
-  return;
-});
+//const imageTsukishima = document.getElementById("tsukishima");
+//
+//imageTsukishima.addEventListener('mouseover', (evt) => {
+//  anime({
+//    targets: imageTsukishima,
+//    keyframes: [
+//      {scale: 0.95},
+//      {scale: 1}
+//    ],
+//    easing: 'easeOutElastic(1, .8)',
+//  });
+//  return;
+//});
 
 const placeCursor = (x, y, width=130, height=160) => {
-  const cursorContainer = document.getElementById("cursor-container");
   const cursorBlue = document.getElementById("cursor-blue");
   const cursorRed = document.getElementById("cursor-red");
   
-  cursorBlue.remove();
-  cursorRed.remove();
+  if(cursorBlue && cursorRed){
+    cursorBlue.remove();
+    cursorRed.remove();
+  }
 
   //==CURSOR CONFIG==//
   const cornerArea = [34,15];
@@ -160,43 +161,32 @@ const placeCursor = (x, y, width=130, height=160) => {
   const redCursor = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
   //these cursors will have the same animation as the above but they will
   //both be blue and be hidden from view.
-  const blueCursor2 = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-  const blueCursor3 = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
 
-  blueCursor2.setAttribute('id', 'cursor-blue2');
-  blueCursor3.setAttribute('id', 'cursor-blue3');
   blueCursor.setAttribute('id', 'cursor-blue');
   redCursor.setAttribute('id', 'cursor-red');
 
-  blueCursor2.setAttribute('class', 'cursor2 cursor-blue2 cursor-blue');
-  blueCursor3.setAttribute('class', 'cursor2 cursor-blue3 cursor-red');
   blueCursor.setAttribute('class', 'cursor cursor-blue');
   redCursor.setAttribute('class', 'cursor cursor-red');
 
-  blueCursor2.setAttribute('points', blueCornerPointValues[0].value);
-  blueCursor3.setAttribute('points', redCornerPointValues[0].value);
   blueCursor.setAttribute('points', blueCornerPointValues[0].value);
   redCursor.setAttribute('points', redCornerPointValues[0].value);
   
-  blueCursor2.setAttribute('fill', '#09fffb');
-  blueCursor3.setAttribute('fill', '#09fffb');
   blueCursor.setAttribute('fill', '#09fffb');
-  redCursor.setAttribute('fill', 'black');
+  redCursor.setAttribute('fill', '#de0716');
 
   redCursor.setAttribute('mask', 'url(#myMask)');
   blueCursor.setAttribute('visibility', 'hidden');
 
-  blueCursor2.setAttribute('z-index', '-1');
-  blueCursor3.setAttribute('z-index', '-1');
-
   const labelContainer = document.getElementById('aoyamaitchome-label');
-  const myMask = document.getElementById('myMask');
-//  const visibleCursorContainer = document.getElementById('visible-cursor-container');
+  const cursorContainer = document.getElementById('cursor-container');
+  const myClipPath = document.getElementById('myClipPath');
 
 //  myMask.insertAdjacentElement('afterend', blueCursor);
 //  myMask.insertAdjacentElement('afterend', redCursor);
-  labelContainer.prepend(blueCursor);
-  labelContainer.prepend(redCursor);
+  cursorContainer.prepend(blueCursor);
+  cursorContainer.prepend(redCursor);
+  redCursorClipPath = redCursor.cloneNode();
+  myClipPath.prepend(redCursorClipPath);
 //  visibleCursorContainer.prepend(blueCursor);
 //  visibleCursorContainer.prepend(redCursor);
 
@@ -207,17 +197,17 @@ const placeCursor = (x, y, width=130, height=160) => {
     points: redCornerPointValues,
     easing: 'easeOutQuad',
     duration: 2000,
-    //loop: true
+    loop: true
   })
 
   console.debug('blueCornerPointValues', blueCornerPointValues);
-  anime({
-    targets: '.cursor-blue',
-    points: blueCornerPointValues,
-    easing: 'easeOutQuad',
-    duration: 2000,
-    //loop: true
-  })
+//  anime({
+//    targets: '.cursor-blue',
+//    points: blueCornerPointValues,
+//    easing: 'easeOutQuad',
+//    duration: 2000,
+//    //loop: true
+//  })
 }
 
 placeCursor(658,432);

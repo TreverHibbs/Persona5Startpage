@@ -9,24 +9,23 @@
     <div class="grid-container">
       <svg id="main-svg" class="svg">
         <image class="map-image" href="images/map.png" visibility='hidden'/>
-        <image class="link-image" id="tsukishima" href="images/tsukishima.png" x=1185 y=478 />
-              <mask id="myMask">
-                <!-- Everything under a white pixel will be visible -->
-                <rect x=0 y=0 width="100%" height="100%" fill="white" />
+        <mask id="myMask">
+          <!-- Everything under a white pixel will be visible -->
+          <rect x=0 y=0 width="100%" height="100%" fill="white" />
       
-                <!-- Everything under a black pixel will be invisible -->
-                <image x=650 y=420 width=50 href='images/aoyamaitchome_label_mask.svg' />
-              </mask>
+          <!-- Everything under a black pixel will be invisible -->
+          <image x=650 y=420 width=70 href='images/aoyamaitchome_label_mask.svg' />
+        </mask>
+        <clipPath id="myClipPath">
+          <!-- Everything under a black pixel will be invisible -->
+        </clipPath>
+        <image x=650 y=420 width=70 clip-path='url(#myClipPath)' href='images/aoyamaitchome_label_mask_blue.svg' />
         <g id="cursor-container" class="animated-cursor-container">
-          <g class="label" id="aoyamaitchome-label">
-            <image class="label-content label-image" id="aoyamaitchome-label-bg" href="images/svg/aoyamaitchome_label_alt.svg" x=592 y=408 />
-            <text class="label-content label-text label-kanji" id="aoyamaitchome-label-kanji" x=608 y=443 >kanji</text>
-            <text class="label-content label-text label-english" id="aoyamaitchome-label-english" x=609 y=460 >title</text>
-          </g>
-          <polygon id="cursor-blue" class="cursor cursor-blue" points="10,110 110,110 110,10" 
-          fill="#09fffb" visibility=hidden />
-          <polygon id="cursor-red" class="cursor cursor-red" points="29,33 66,122 150,54" 
-          fill="#ff110e" visibility=hidden />
+        </g>
+        <g class="label" id="aoyamaitchome-label">
+          <image class="label-content label-image" id="aoyamaitchome-label-bg" href="images/svg/aoyamaitchome_label_alt.svg" x=592 y=408 />
+          <text class="label-content label-text label-kanji" id="aoyamaitchome-label-kanji" x=608 y=443 >kanji</text>
+          <text class="label-content label-text label-english" id="aoyamaitchome-label-english" x=609 y=460 >title</text>
         </g>
       </svg>
     </div>
