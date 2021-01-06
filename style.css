@@ -38,8 +38,25 @@ html, body {
   isolation: isolate;
 }
 
+#visible-cursor-container {
+  isolation: isolate;
+}
+
 .cursor {
   mix-blend-mode: darken;
+}
+
+.label-content {
+  visibility: hidden;
+  mix-blend-mode: difference;
+}
+
+.label-english {
+  fill: #09fffb;
+}
+
+.label-kanji {
+  fill: #09fffb;
 }
 
 /* link images */

@@ -41,8 +41,30 @@ $image-width: 1450px;
 .animated-cursor-container {
   isolation: isolate;
 }
+#visible-cursor-container {
+  isolation: isolate;
+}
+
 .cursor {
   mix-blend-mode: darken;
+}
+
+
+.label {
+}
+
+.label-content {
+  visibility: hidden;
+  mix-blend-mode: difference;
+}
+
+// label text needs to be blue for difference to get the right colors
+.label-english {
+  fill: #09fffb;
+}
+
+.label-kanji {
+  fill: #09fffb;
 }
 
 /* link images */

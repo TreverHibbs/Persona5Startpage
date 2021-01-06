@@ -154,42 +154,69 @@ const placeCursor = (x, y, width=130, height=160) => {
   const redCornerPointValues = pickRandomPoints(redCornerArea4, redCornerArea3, redCornerArea2, redCornerArea1);
   const blueCornerPointValues = pickRandomPoints(blueCornerArea4, blueCornerArea3, blueCornerArea2, blueCornerArea1);
 
-  //create corsor polygone elements with initial point
+  //create corsor polygone elements with initial point.
+  //craete two setts for the both blue pare and the red blue pair.
   const blueCursor = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
   const redCursor = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+  //these cursors will have the same animation as the above but they will
+  //both be blue and be hidden from view.
+  const blueCursor2 = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+  const blueCursor3 = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
 
+  blueCursor2.setAttribute('id', 'cursor-blue2');
+  blueCursor3.setAttribute('id', 'cursor-blue3');
   blueCursor.setAttribute('id', 'cursor-blue');
   redCursor.setAttribute('id', 'cursor-red');
 
+  blueCursor2.setAttribute('class', 'cursor2 cursor-blue2 cursor-blue');
+  blueCursor3.setAttribute('class', 'cursor2 cursor-blue3 cursor-red');
   blueCursor.setAttribute('class', 'cursor cursor-blue');
   redCursor.setAttribute('class', 'cursor cursor-red');
 
+  blueCursor2.setAttribute('points', blueCornerPointValues[0].value);
+  blueCursor3.setAttribute('points', redCornerPointValues[0].value);
   blueCursor.setAttribute('points', blueCornerPointValues[0].value);
   redCursor.setAttribute('points', redCornerPointValues[0].value);
   
+  blueCursor2.setAttribute('fill', '#09fffb');
+  blueCursor3.setAttribute('fill', '#09fffb');
   blueCursor.setAttribute('fill', '#09fffb');
-  redCursor.setAttribute('fill', "#ff110e");
+  redCursor.setAttribute('fill', 'black');
 
-  cursorContainer.appendChild(blueCursor);
-  cursorContainer.appendChild(redCursor);
+  redCursor.setAttribute('mask', 'url(#myMask)');
+  blueCursor.setAttribute('visibility', 'hidden');
+
+  blueCursor2.setAttribute('z-index', '-1');
+  blueCursor3.setAttribute('z-index', '-1');
+
+  const labelContainer = document.getElementById('aoyamaitchome-label');
+  const myMask = document.getElementById('myMask');
+//  const visibleCursorContainer = document.getElementById('visible-cursor-container');
+
+//  myMask.insertAdjacentElement('afterend', blueCursor);
+//  myMask.insertAdjacentElement('afterend', redCursor);
+  labelContainer.prepend(blueCursor);
+  labelContainer.prepend(redCursor);
+//  visibleCursorContainer.prepend(blueCursor);
+//  visibleCursorContainer.prepend(redCursor);
 
   //==ANIMATE==\\
   console.debug('redCornerPointValues', redCornerPointValues);
   anime({
-    targets: '#cursor-red',
+    targets: '.cursor-red',
     points: redCornerPointValues,
     easing: 'easeOutQuad',
     duration: 2000,
-    loop: true
+    //loop: true
   })
 
   console.debug('blueCornerPointValues', blueCornerPointValues);
   anime({
-    targets: '#cursor-blue',
+    targets: '.cursor-blue',
     points: blueCornerPointValues,
     easing: 'easeOutQuad',
     duration: 2000,
-    loop: true
+    //loop: true
   })
 }
 
