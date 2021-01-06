@@ -33,16 +33,16 @@ html, body {
   height: auto;
 }
 
-.animated-cursor-container {
+#cursor-container {
   isolation: isolate;
 }
 
-#visible-cursor-container {
-  isolation: isolate;
+.cursor-blue {
+  mix-blend-mode: darken;
 }
 
 .label {
-  visibility: hidden;
+  isolation: isolate;
 }
 
 .label-content {

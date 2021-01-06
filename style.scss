@@ -38,21 +38,17 @@ $image-width: 1450px;
   height: auto;
 }
 
-.animated-cursor-container {
+#cursor-container {
   isolation: isolate;
 }
 
-#visible-cursor-container {
-  isolation: isolate;
-}
-
-.cursor {
-//  mix-blend-mode: darken;
+.cursor-blue {
+  mix-blend-mode: darken;
 }
 
 
 .label {
-  visibility: hidden;
+  isolation: isolate;
 }
 
 .label-content {

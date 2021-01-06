@@ -175,7 +175,7 @@ const placeCursor = (x, y, width=130, height=160) => {
   redCursor.setAttribute('fill', '#de0716');
 
   redCursor.setAttribute('mask', 'url(#myMask)');
-  blueCursor.setAttribute('visibility', 'hidden');
+//  blueCursor.setAttribute('visibility', 'hidden');
 
   const labelContainer = document.getElementById('aoyamaitchome-label');
   const cursorContainer = document.getElementById('cursor-container');
@@ -201,13 +201,13 @@ const placeCursor = (x, y, width=130, height=160) => {
   })
 
   console.debug('blueCornerPointValues', blueCornerPointValues);
-//  anime({
-//    targets: '.cursor-blue',
-//    points: blueCornerPointValues,
-//    easing: 'easeOutQuad',
-//    duration: 2000,
-//    //loop: true
-//  })
+  anime({
+    targets: '.cursor-blue',
+    points: blueCornerPointValues,
+    easing: 'easeOutQuad',
+    duration: 2000,
+    loop: true
+  })
 }
 
 placeCursor(658,432);
