@@ -31,28 +31,39 @@ mainSvg.addEventListener('click',function(evt){
 //  return;
 //});
 
-const placeCursor = (x, y, width=130, height=160) => {
+
+/**
+ *  @desc place the cursor which is the animated polygons its mask and its
+ *  path clip. The origin of the cursor is at its top left corner.
+ *  @param number $x - The x position of the cursor
+ *         number $y - the y position of the cursor
+ *         number $width - the max width of the cursor
+ *         number $height - the max height of the cursor
+ *         [number, number $cornerArea - the dimensions of the area for each corener
+ *                                       to select its random points of animation
+ *                                       dimenstion are width and heighth respectively
+ *  @return null - nothing needs returned
+ */
+const placeCursor = (x, y, width=127, height=56, cornerArea=[34,15]) => {
   const cursorBlue = document.getElementById("cursor-blue");
   const cursorRed = document.getElementById("cursor-red");
-  
+
   if(cursorBlue && cursorRed){
     cursorBlue.remove();
     cursorRed.remove();
   }
 
-  //==CURSOR CONFIG==//
-  const cornerArea = [34,15];
-  const corner4Area = cornerArea;
-  //subtract width of area by half the width of the cursor area
-  //every diamond corner area will have dimension 34px,15px
-  //874 454 topleft coordinate of corner four area
+  //corner area gives the width and height respetively
+  //of the areas in which the random
+  //points for the animation are selected.
+
   /*blue polygon corner labels
-   *  1*------*2
-   *   |      |
-   *   |      |
-   *   |      |      
    *  4*------*3
-  */
+   *   |      |
+   *   |      |
+   *   |      |
+   *  1*------*2
+   */
 
   /*red polygon corner labels
    *      *2
@@ -62,98 +73,113 @@ const placeCursor = (x, y, width=130, height=160) => {
    *    \   /
    *     \ /
    *      *4
-  */
+   */
 
-  const redCorner4 = [x, y+(height/4)];
-  const redCorner3 = [x+(width/2), y-20];
-  const redCorner2 = [x, y-(height/4)];
-  const redCorner1 = [x-(width/2)-30, y-10];
+  // config for random animation generation
+  // calculate corner area offset so that corner position config
+  // is position relative to center of corner area.
+  const cornerCenterX = x-cornerArea[0]/2
+  const cornerCenterY = y-cornerArea[1]/2
 
-  const blueCorner4 = [x-(width/2)-15, y+(height/4)-20];
-  const blueCorner3 = [x+(width/2)-5, y+(height/4)-20];
-  const blueCorner2 = [x+(width/2)-15, y-(height/4)+10];
-  const blueCorner1 = [x-(width/2), y-(height/4)];
+  //configure the position of the cursor points relative to width and heigth
+  //of box
+  const redCorners = [];
+  redCorners[0] = [cornerCenterX, cornerCenterY+(height/2)];
+  redCorners[1]  = [cornerCenterX+(width/2), cornerCenterY];
+  redCorners[2]  = [cornerCenterX+(width*1.2), cornerCenterY+(height/2)];
+  redCorners[3]  = [cornerCenterX+(width/1.05), cornerCenterY+(height*1.4)];
 
-  const CalculateCornerAreaArrays = (corner) => {
-    //calculate array for possible x coordinates of corner
-    const cornerAreaXaxisArray = [corner[0]];
-    for(let i = 0; i < cornerArea[0]; i++){
-      cornerAreaXaxisArray.push(corner[0]+i+1);
-    }
-    //calculate array for possible y coordinates of corner
-    const cornerAreaYaxisArray = [corner[1]];
-    for(let i = 0; i < cornerArea[1]; i++){
-      cornerAreaYaxisArray.push(corner[1]+i+1);
-    }
-    return(
-      {
-        XaxisArray: cornerAreaXaxisArray,
-        YaxisArray: cornerAreaYaxisArray,
-      }
-    )
-  }
+  const blueCorners = [];
+  blueCorners[0] = [cornerCenterX+25, cornerCenterY+(height)+3];
+  blueCorners[1] = [cornerCenterX+(width)+20, cornerCenterY+(height)];
+  blueCorners[2] = [cornerCenterX+(width)+25, cornerCenterY+10];
+  blueCorners[3] = [cornerCenterX+25, cornerCenterY];
 
-  const redCornerArea4 = CalculateCornerAreaArrays(redCorner4);
-  const redCornerArea3 = CalculateCornerAreaArrays(redCorner3);
-  const redCornerArea2 = CalculateCornerAreaArrays(redCorner2);
-  const redCornerArea1 = CalculateCornerAreaArrays(redCorner1);
-
-  const blueCornerArea4 = CalculateCornerAreaArrays(blueCorner4);
-  const blueCornerArea3 = CalculateCornerAreaArrays(blueCorner3);
-  const blueCornerArea2 = CalculateCornerAreaArrays(blueCorner2);
-  const blueCornerArea1 = CalculateCornerAreaArrays(blueCorner1);
-
-
-  const pickRandomPoints = (cornerArea4, cornerArea3, cornerArea2, cornerArea1) => {
+  /**
+   *  @desc Pick random points for a single corner for animation. These random
+   *  points come from the center of the corner area given by the coordinate
+   *  $corner and the cornerArea.
+   *  @param Array $corner - The x and y axis of center of a corners given area
+   *  @return null - A string with the value for the points polygon attribute
+   */
+  const pickRandomPoint = (corner) => {
     const cornerPointValues = [];
-    for(let i = 0; i < 10; i++){
-      //calulate one of the coordinates
-      const point4 = [];
-      const point3 = [];
-      const point2 = [];
-      const point1 = [];
-      point4[0] = cornerArea4.XaxisArray[Math.floor(Math.random() * cornerArea4.XaxisArray.length)];
-      point4[1] = cornerArea4.YaxisArray[Math.floor(Math.random() * cornerArea4.YaxisArray.length)];
-      point3[0] = cornerArea3.XaxisArray[Math.floor(Math.random() * cornerArea3.XaxisArray.length)];
-      point3[1] = cornerArea3.YaxisArray[Math.floor(Math.random() * cornerArea3.YaxisArray.length)];
-      point2[0] = cornerArea2.XaxisArray[Math.floor(Math.random() * cornerArea2.XaxisArray.length)];
-      point2[1] = cornerArea2.YaxisArray[Math.floor(Math.random() * cornerArea2.YaxisArray.length)];
-      point1[0] = cornerArea1.XaxisArray[Math.floor(Math.random() * cornerArea1.XaxisArray.length)];
-      point1[1] = cornerArea1.YaxisArray[Math.floor(Math.random() * cornerArea1.YaxisArray.length)];
 
-      if(i == 1){
-        // Add a array of two strings as the first value in the array
-        // this ensures that the loop is smooth
-        // the loop will start with the first array etnry and then all
-        // subsequent loops will ues the second.
-        const newValue = {
-          value: [ cornerPointValues[0].value, 
-            point1[0] + ',' + point1[1] + ' ' + 
-            point2[0] + ',' + point2[1]  + ' ' + 
-            point3[0] + ',' + point3[1] + ' ' + 
-            point4[0] + ',' + point4[1]
-          ] 
-        }
-        cornerPointValues[0] = newValue;
-      }else{
-        const newValue = { 
-          value: point1[0] + ',' + point1[1] + ' ' + 
-            point2[0] + ',' + point2[1]  + ' ' + 
-            point3[0] + ',' + point3[1] + ' ' + 
-            point4[0] + ',' + point4[1] 
-        }
-        cornerPointValues.push(newValue);
-      }
- 
-    }
+    const cornerXaxisMax = corner[0] + cornerArea[0]/2;
+    const cornerYaxisMax = corner[1] + cornerArea[1]/2;
+
+    const cornerXaxisMin = corner[0] - cornerArea[0]/2;
+    const cornerYaxisMin = corner[1] - cornerArea[1]/2;
+
+    const point = [];
+    point[0] = Math.random() * (cornerXaxisMax - cornerXaxisMin) + cornerXaxisMin;
+    point[1] = Math.random() * (cornerYaxisMax - cornerYaxisMin) + cornerYaxisMin;
+
+    //console.debug("return string of pick random points", point[0] + ',' + point[1]);
+
+    return(point[0] + ',' + point[1]);
     //push first to last for smooth looping see docs on polygon morphing for
     //anime.js.
-    cornerPointValues.push(cornerPointValues[0].value[0]);
-    return(cornerPointValues);
   }
 
-  const redCornerPointValues = pickRandomPoints(redCornerArea4, redCornerArea3, redCornerArea2, redCornerArea1);
-  const blueCornerPointValues = pickRandomPoints(blueCornerArea4, blueCornerArea3, blueCornerArea2, blueCornerArea1);
+  /**
+   *  @desc - Pick random points for all four corners of a polygon
+   *  @param Array $corners - An array of coordinates that represent the center
+   *  of a corners area of possible animation.
+   *  @return string - A string of all the points selected in format given below
+   *  "200,300 300,400, 200,3000 34,324" The first and last points are connected.
+   */
+  const pickRandomPoints = (corners) => {
+    const cornerPoints = [];
+    corners.forEach((corner, index) => {
+      cornerPoints[index] = pickRandomPoint(corner);
+    });
+    return(cornerPoints.join(' '));
+  }
+
+  /**
+   *  @desc - generate an array of strings that represent the points to animate
+   *  for a polygon
+   *  @param Array $corners - An array of coordinates that represent the center
+   *  of a corners area of possible animation.
+   *         numbers $length - the number of animation points to generate
+   *  @return Array - The array will be in the format required by animejs
+   *  it will contain objects of the form { value: [] }
+   *  except for the first object which will cotnain an object
+   *  { value: [ value: [points], value: [points] ] }
+   *  this is so that the looping is smooth
+   *  the first object will contain the first points and then another generated points
+   *  the first and last points will be the same to ensure smooth looping.
+   */
+  const generatePointsArray = (corners, length=10) => {
+    if(length < 3){
+      console.error("length must be greater than or equal to 3");
+      return;
+    }
+
+    const pointsArray = [];
+    for(let i = 0; i < length; i++){
+      // if we are at the second loop then add the special form to the first
+      // element in the array for smooth looping
+      if(i == 1){
+        pointsArray[0] = { value: [pointsArray[0].value,pickRandomPoints(corners)] };
+      }
+      if(i == length-1){
+        pointsArray[i] = { value: pointsArray[0].value[0] };
+      } else {
+        pointsArray[i] = { value: pickRandomPoints(corners) };
+      }
+    }
+    return(pointsArray);
+  }
+
+  const redPoints = generatePointsArray(redCorners);
+  const bluePoints = generatePointsArray(blueCorners);
+
+  console.debug("blueCorners", blueCorners);
+
+  console.debug("redCornerPoints", redPoints);
+  console.debug("blueCornerPoints", bluePoints);
 
   //create corsor polygone elements with initial point.
   //craete two setts for the both blue pare and the red blue pair.
@@ -168,47 +194,45 @@ const placeCursor = (x, y, width=130, height=160) => {
   blueCursor.setAttribute('class', 'cursor cursor-blue');
   redCursor.setAttribute('class', 'cursor cursor-red');
 
-  blueCursor.setAttribute('points', blueCornerPointValues[0].value);
-  redCursor.setAttribute('points', redCornerPointValues[0].value);
-  
+  blueCursor.setAttribute('points', bluePoints[0].value);
+  redCursor.setAttribute('points', redPoints[0].value);
+
   blueCursor.setAttribute('fill', '#09fffb');
   redCursor.setAttribute('fill', '#de0716');
 
   redCursor.setAttribute('mask', 'url(#myMask)');
-//  blueCursor.setAttribute('visibility', 'hidden');
+  //  blueCursor.setAttribute('visibility', 'hidden');
 
   const labelContainer = document.getElementById('aoyamaitchome-label');
   const cursorContainer = document.getElementById('cursor-container');
   const myClipPath = document.getElementById('myClipPath');
 
-//  myMask.insertAdjacentElement('afterend', blueCursor);
-//  myMask.insertAdjacentElement('afterend', redCursor);
+  //  myMask.insertAdjacentElement('afterend', blueCursor);
+  //  myMask.insertAdjacentElement('afterend', redCursor);
   cursorContainer.prepend(blueCursor);
   cursorContainer.prepend(redCursor);
   redCursorClipPath = redCursor.cloneNode();
   myClipPath.prepend(redCursorClipPath);
-//  visibleCursorContainer.prepend(blueCursor);
-//  visibleCursorContainer.prepend(redCursor);
+  //  visibleCursorContainer.prepend(blueCursor);
+  //  visibleCursorContainer.prepend(redCursor);
 
   //==ANIMATE==\\
-  console.debug('redCornerPointValues', redCornerPointValues);
   anime({
     targets: '.cursor-red',
-    points: redCornerPointValues,
+    points: redPoints,
     easing: 'easeOutQuad',
     duration: 2000,
     loop: true
   })
 
-  console.debug('blueCornerPointValues', blueCornerPointValues);
   anime({
     targets: '.cursor-blue',
-    points: blueCornerPointValues,
+    points: bluePoints,
     easing: 'easeOutQuad',
     duration: 2000,
     loop: true
   })
 }
 
-placeCursor(658,432);
+placeCursor(593,408);
 
