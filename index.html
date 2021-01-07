@@ -8,24 +8,24 @@
   <body>
     <div class="grid-container">
       <svg id="main-svg" class="svg">
-        <image class="map-image" href="images/map.png" visibility='hidden'/>
+        <image class="map-image" href="images/map.png" visibility='visible'/>
         <mask id="myMask">
           <!-- Everything under a white pixel will be visible -->
           <rect x=0 y=0 width="100%" height="100%" fill="white" />
       
           <!-- Everything under a black pixel will be invisible -->
-          <image x=650 y=420 href='images/aoyamaitchome_label_mask.svg' />
+          <image x=593 y=408 href='images/aoyamaitchome_label_mask.svg' />
         </mask>
         <clipPath id="myClipPath">
           <!-- Everything under a black pixel will be invisible -->
         </clipPath>
-        <image x=650 y=420 clip-path='url(#myClipPath)' href='images/aoyamaitchome_label_mask_blue.svg' />
         <g id="cursor-container" class="animated-cursor-container">
-        </g>
-        <g class="label" id="aoyamaitchome-label">
-          <image class="label-content label-image" id="aoyamaitchome-label-bg" href="images/svg/aoyamaitchome_label_alt.svg" x=650 y=420 />
-          <text class="label-content label-text label-kanji" id="aoyamaitchome-label-kanji" x=670 y=440 >kanji</text>
-          <text class="label-content label-text label-english" id="aoyamaitchome-label-english" x=670 y=473 >title</text>
+          <image x=593 y=408 clip-path='url(#myClipPath)' href='images/aoyamaitchome_label_mask_blue.svg' />
+          <g class="label" id="aoyamaitchome-label">
+            <image class="label-content label-image" id="aoyamaitchome-label-bg" href="images/svg/aoyamaitchome_label_alt.svg" x=593 y=408 />
+            <text class="label-content label-text label-kanji" id="aoyamaitchome-label-kanji" x=610 y=438 >kanji</text>
+            <text class="label-content label-text label-english" id="aoyamaitchome-label-english" x=617 y=462 >title</text>
+          </g>
         </g>
       </svg>
     </div>

@@ -5,7 +5,7 @@
 
 html, body {
 /*  background: no-repeat center url("images/map.png"); */
-    //background-color: #de0916;
+    background-color: #de0916;
     font-family: myFont, "Liberaion Sans", sans-serif;
     margin: 0;
     height: 100%;
@@ -48,7 +48,7 @@ $image-width: 1450px;
 
 
 .label {
-  isolation: isolate;
+  //visibility: hidden;
 }
 
 .label-content {
