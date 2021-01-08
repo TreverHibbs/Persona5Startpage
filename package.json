@@ -5,8 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/http-server -s",
-    "startSass": "sass --watch style.scss style.css > /dev/null"
+    "start": "./node_modules/.bin/http-server -s > /dev/null 2>&1",
+    "startSass": "sass --watch style.scss style.css > /dev/null 2>&1"
   },
   "repository": {
     "type": "git",

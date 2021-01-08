@@ -1,5 +1,5 @@
 import { getCoordinates } from './lib/getCoordinate.js';
-import { uiInterface } from './lib/uiInterface.js';
+import { userInterface } from './lib/userInterface.js';
 
 
 
@@ -9,7 +9,6 @@ import { uiInterface } from './lib/uiInterface.js';
 //getCoordinates();
 
 
-
 //initialize 
 //initialize interface
-uiInterface();
+userInterface();
