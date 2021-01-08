@@ -9,6 +9,11 @@ import { userInterface } from './lib/userInterface.js';
 //getCoordinates();
 
 
-//initialize 
+//initialize place images
+const aoyamaitchomeCoordinate = [593, 408];
+//TODO function to set all images to position
+
+
+
 //initialize interface
 userInterface();
