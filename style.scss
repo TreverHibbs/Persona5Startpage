@@ -64,7 +64,9 @@ $image-width: 1450px;
   transform: rotate(-3deg);
 }
 
-.label-kanji {
+#aoyamaitchome-label-kanji {
+  transform-origin: center;
+  transform: rotate(-3deg);
 }
 
 .label-text {

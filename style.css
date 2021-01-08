@@ -55,6 +55,11 @@ html, body {
   transform: rotate(-3deg);
 }
 
+#aoyamaitchome-label-kanji {
+  transform-origin: center;
+  transform: rotate(-3deg);
+}
+
 .label-text {
   pointer-events: none;
 }
