@@ -20,5 +20,8 @@
   "homepage": "https://github.com/TreverHibbs/josh#readme",
   "devDependencies": {
     "http-server": "^0.12.3"
+  },
+  "compilerOptions": {
+      "checkJs": true
   }
 }

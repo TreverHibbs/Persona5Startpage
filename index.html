@@ -4,11 +4,13 @@
     <title>Josh is Furry</title>
     <link rel="stylesheet" href="style.css">
     <script src="lib/anime.min.js"></script>
+    <script src="lib/psl.min.js"></script>
   </head>
   <body>
     <div class="grid-container">
       <svg id="main-svg" class="svg">
         <image class="map-image" href="images/map.png" visibility='visible'/>
+        <image x=580 y=330 class='city-image' id="aoyamaitchome-image" href="images/aoyamaitchome_image.png" visibility='visible'/>
         <mask id="myMask">
           <!-- Everything under a white pixel will be visible -->
           <rect x=0 y=0 width="100%" height="100%" fill="white" />
@@ -22,14 +24,14 @@
         <g id="cursor-container" class="animated-cursor-container">
           <image x=593 y=408 clip-path='url(#myClipPath)' href='images/aoyamaitchome_label_mask_blue.svg' />
           <g class="label" id="aoyamaitchome-label">
-            <image class="label-content label-image" id="aoyamaitchome-label-bg" href="images/svg/aoyamaitchome_label_alt.svg" x=593 y=408 />
-            <text class="label-content label-text label-kanji" id="aoyamaitchome-label-kanji" x=610 y=438 >kanji</text>
-            <text class="label-content label-text label-english" id="aoyamaitchome-label-english" x=617 y=462 >title</text>
+            <image class="label-content-unselected" id="aoyamaitchome-label-bg" href="images/svg/aoyamaitchome_label.svg" x=593 y=408 />
+            <text class="label-content-unselected label-text" id="aoyamaitchome-label-kanji" x=610 y=438 fill='white'>kanji</text>
+            <text class="label-content-unselected label-text" id="aoyamaitchome-label-english" x=617 y=462 fill='black'>title</text>
           </g>
         </g>
       </svg>
     </div>
   </body>
-  <script src="main.js"></script>
+  <script type='module' src="main.js"></script>
 </html>
 

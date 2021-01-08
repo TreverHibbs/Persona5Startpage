@@ -51,17 +51,23 @@ $image-width: 1450px;
   //visibility: hidden;
 }
 
-.label-content {
+.label-content-unselected {
+  mix-blend-mode: normal;
+}
+
+.label-content-selected {
   mix-blend-mode: difference;
 }
 
 // label text needs to be blue for difference to get the right colors
 .label-english {
-  fill: #09fffb;
 }
 
 .label-kanji {
-  fill: #09fffb;
+}
+
+.label-text {
+  pointer-events: none;
 }
 
 /* link images */
@@ -69,3 +75,6 @@ $image-width: 1450px;
   transform-origin: 85% 60%;
 }
 
+.city-image {
+  transform-origin: 45% 50%;
+}

@@ -42,21 +42,25 @@ html, body {
   mix-blend-mode: darken;
 }
 
-.label-content {
+.label-content-unselected {
+  mix-blend-mode: normal;
+}
+
+.label-content-selected {
   mix-blend-mode: difference;
 }
 
-.label-english {
-  fill: #09fffb;
-}
-
-.label-kanji {
-  fill: #09fffb;
+.label-text {
+  pointer-events: none;
 }
 
 /* link images */
 #tsukishima {
   transform-origin: 85% 60%;
+}
+
+.city-image {
+  transform-origin: 45% 50%;
 }
 
 /*# sourceMappingURL=style.css.map */

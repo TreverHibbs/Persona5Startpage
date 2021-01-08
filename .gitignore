@@ -1,3 +1,5 @@
 node_modules/
 *.vim
 tags
+.git/
+
