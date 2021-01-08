@@ -1,6 +1,6 @@
 @font-face {
   font-family: myFont;
-  src: url(./fonts/ttf/Hack-Regular.ttf);
+  src: url(./fonts/ttf/p5hatty.ttf);
 }
 
 html, body {
@@ -71,6 +71,12 @@ $image-width: 1450px;
 
 .label-text {
   pointer-events: none;
+  font-variant-caps: small-caps;
+  font-weight: bolder;
+  font-size: large;
+}
+.label-kanji {
+  font-size: xx-large;
 }
 
 /* link images */
