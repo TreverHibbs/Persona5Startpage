@@ -50,6 +50,11 @@ html, body {
   mix-blend-mode: difference;
 }
 
+#aoyamaitchome-label-english {
+  transform-origin: center;
+  transform: rotate(-3deg);
+}
+
 .label-text {
   pointer-events: none;
 }
