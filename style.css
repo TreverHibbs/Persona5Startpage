@@ -50,12 +50,12 @@ html, body {
   mix-blend-mode: difference;
 }
 
-#aoyamaitchome-label-english {
+#label0-english {
   transform-origin: center;
   transform: rotate(-3deg);
 }
 
-#aoyamaitchome-label-kanji {
+#label0-kanji {
   transform-origin: center;
   transform: rotate(-3deg);
 }
