@@ -1,5 +1,5 @@
 import { getCoordinates } from './lib/getCoordinate.js';
-import { userInterface } from './lib/userInterface.js';
+import { setLink, userInterface } from './lib/userInterface.js';
 
 
 
@@ -36,6 +36,7 @@ const coordinates0 = makeCoordinateObj(
  *  @return undefined - nothing need be returned
  */
 const placeLabel = (labelId, coordinates) => {
+  console.debug('running place label');
   const labelTemplate = document.getElementById('label-template');
   console.debug("labelTemplate", labelTemplate);
   console.debug("labelTemplate content", labelTemplate.content);
@@ -72,4 +73,5 @@ placeLabel(0, coordinates0);
 
 
 //initialize interface
+setLink(0); 
 userInterface();
