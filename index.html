@@ -1,5 +1,6 @@
 <!doctype html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml>
+  xmlns:svg="http://www.w3.org/2000/svg">
   <head>
     <title>Josh is Furry</title>
     <link rel="stylesheet" href="style.css">
@@ -11,7 +12,16 @@
   </head>
   <body>
     <div class="grid-container">
-      <svg id="main-svg" class="svg">
+      <svg id="main-svg" class="svg" xmlns="http://www.w3.org/2000/svg">
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs id="label-defs">
+          <image class="label-clip-bg" clip-path="url(#myClipPath)" />
+          <g class="label" >
+            <image class="label-content-unselected label-image-bg" id="label-image-bg" />
+            <text class="label-content-unselected label-text label-kanji" fill='white'>結構</text>
+            <text class="label-content-unselected label-text label-english" fill='black'>title</text>
+          </g>
+        </defs>
         <image class="map-image" href="images/map.png" visibility='visible'/>
         <image x=580 y=330 class='city-image' id="image0" href="images/0_image.png" visibility='visible'/>
         <mask id="myMask">
@@ -29,14 +39,6 @@
       </svg>
     </div>
   </body>
-  <template id="label-template">
-    <image class='label-clip-bg' clip-path='url(#myClipPath)' />
-    <g class="label" >
-      <image class="label-content-unselected label-image-bg" />
-      <text class="label-content-unselected label-text label-kanji" fill='white'>結構</text>
-      <text class="label-content-unselected label-text label-english" fill='black'>title</text>
-    </g>
-  </template>
   <script type='module' src="main.js"></script>
 </html>
 

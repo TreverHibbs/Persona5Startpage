@@ -1,5 +1,5 @@
 import { getCoordinates } from './lib/getCoordinate.js';
-import { setLink, userInterface } from './lib/userInterface.js';
+//import { setLink, userInterface } from './lib/userInterface.js';
 
 
 
@@ -8,6 +8,8 @@ import { setLink, userInterface } from './lib/userInterface.js';
 // get coordinates tool for development
 //getCoordinates();
 
+//svg namespace
+const svgNs = 'http://www.w3.org/2000/svg' 
 
 //initialize place images
 const makeCoordinateObj = (labelCoordinates, englishCoordinates, kanjiCoordinates, cityImageCoordinates) => {
@@ -36,42 +38,36 @@ const coordinates0 = makeCoordinateObj(
  *  @return undefined - nothing need be returned
  */
 const placeLabel = (labelId, coordinates) => {
-  console.debug('running place label');
-  const labelTemplate = document.getElementById('label-template');
-  console.debug("labelTemplate", labelTemplate);
-  console.debug("labelTemplate content", labelTemplate.content);
+  const useLabelClip = document.createElementNS(svgNs, 'image');
+  useLabelClip.setAttributeNS(null, 'class', 'label' + labelId);
+  useLabelClip.setAttributeNS(null, 'href', 'images/svg/' + labelId + '_label_mask_blue.svg');
+  useLabelClip.setAttributeNS(null, 'clip-path', 'url(#myClipPath)');
+  useLabelClip.setAttributeNS(null, 'x', coordinates.labelCoordinates[0]);
+  useLabelClip.setAttributeNS(null, 'y', coordinates.labelCoordinates[1]);
 
-  const cloneLabel = labelTemplate.content.cloneNode(true);
+  //const cloneLabelImage = cloneLabel.querySelector('.label-image-bg');
+  //cloneLabelImage.setAttribute('id', labelId + '-bg');
+  //cloneLabelImage.setAttribute('href', 'images/svg/' + labelId + '_label.svg');
+  //cloneLabelImage.setAttribute('x', coordinates.labelCoordinates[0]);
+  //cloneLabelImage.setAttribute('y', coordinates.labelCoordinates[1]);
 
-  const cloneLabelClip = cloneLabel.querySelector('.label-clip-bg');
-  cloneLabelClip.setAttribute('class', 'label' + labelId);
-  cloneLabelClip.setAttribute('href', 'images/svg/' + labelId + '_label_mask_blue.svg');
-  cloneLabelClip.setAttribute('x', coordinates.labelCoordinates[0]);
-  cloneLabelClip.setAttribute('y', coordinates.labelCoordinates[1]);
+  //const cloneLabelKanji = cloneLabel.querySelector('.label-kanji');
+  //cloneLabelKanji.setAttribute('id', 'label' + labelId + '-kanji');
+  //cloneLabelKanji.setAttribute('x', coordinates.kanjiCoordinates[0]);
+  //cloneLabelKanji.setAttribute('y', coordinates.kanjiCoordinates[1]);
 
-  const cloneLabelImage = cloneLabel.querySelector('.label-image-bg');
-  cloneLabelImage.setAttribute('id', labelId + '-bg');
-  cloneLabelImage.setAttribute('href', 'images/svg/' + labelId + '_label.svg');
-  cloneLabelImage.setAttribute('x', coordinates.labelCoordinates[0]);
-  cloneLabelImage.setAttribute('y', coordinates.labelCoordinates[1]);
-
-  const cloneLabelKanji = cloneLabel.querySelector('.label-kanji');
-  cloneLabelKanji.setAttribute('id', 'label' + labelId + '-kanji');
-  cloneLabelKanji.setAttribute('x', coordinates.kanjiCoordinates[0]);
-  cloneLabelKanji.setAttribute('y', coordinates.kanjiCoordinates[1]);
-
-  const cloneLabelEnglish = cloneLabel.querySelector('.label-english');
-  cloneLabelEnglish.setAttribute('id', 'label' + labelId + '-english');
-  cloneLabelEnglish.setAttribute('x', coordinates.englishCoordinates[0]);
-  cloneLabelEnglish.setAttribute('y', coordinates.englishCoordinates[1]);
+  //const cloneLabelEnglish = cloneLabel.querySelector('.label-english');
+  //cloneLabelEnglish.setAttribute('id', 'label' + labelId + '-english');
+  //cloneLabelEnglish.setAttribute('x', coordinates.englishCoordinates[0]);
+  //cloneLabelEnglish.setAttribute('y', coordinates.englishCoordinates[1]);
 
   const cursorContainer = document.getElementById('cursor-container'); 
-  cursorContainer.appendChild(cloneLabel);
+  cursorContainer.appendChild(useLabelClip);
 }
 
 placeLabel(0, coordinates0);
 
 
 //initialize interface
-setLink(0); 
-userInterface();
+//setLink(0); 
+//userInterface();
