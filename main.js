@@ -12,6 +12,7 @@ import { getCoordinates } from './lib/getCoordinate.js';
 const svgNs = 'http://www.w3.org/2000/svg' 
 
 //initialize place images
+//Coordinate object deffinition
 const makeCoordinateObj = (labelCoordinates, englishCoordinates, kanjiCoordinates, cityImageCoordinates) => {
   return({ labelCoordinates: labelCoordinates,
            englishCoordinates: englishCoordinates,
@@ -38,31 +39,45 @@ const coordinates0 = makeCoordinateObj(
  *  @return undefined - nothing need be returned
  */
 const placeLabel = (labelId, coordinates) => {
-  const useLabelClip = document.createElementNS(svgNs, 'image');
-  useLabelClip.setAttributeNS(null, 'class', 'label' + labelId);
-  useLabelClip.setAttributeNS(null, 'href', 'images/svg/' + labelId + '_label_mask_blue.svg');
-  useLabelClip.setAttributeNS(null, 'clip-path', 'url(#myClipPath)');
-  useLabelClip.setAttributeNS(null, 'x', coordinates.labelCoordinates[0]);
-  useLabelClip.setAttributeNS(null, 'y', coordinates.labelCoordinates[1]);
+  const labelClip = document.createElementNS(svgNs, 'image');
+  labelClip.setAttributeNS(null, 'class', 'label' + labelId);
+  labelClip.setAttributeNS(null, 'href', 'images/svg/' + labelId + '_label_mask_blue.svg');
+  labelClip.setAttributeNS(null, 'clip-path', 'url(#myClipPath)');
+  labelClip.setAttributeNS(null, 'x', coordinates.labelCoordinates[0]);
+  labelClip.setAttributeNS(null, 'y', coordinates.labelCoordinates[1]);
 
-  //const cloneLabelImage = cloneLabel.querySelector('.label-image-bg');
-  //cloneLabelImage.setAttribute('id', labelId + '-bg');
-  //cloneLabelImage.setAttribute('href', 'images/svg/' + labelId + '_label.svg');
-  //cloneLabelImage.setAttribute('x', coordinates.labelCoordinates[0]);
-  //cloneLabelImage.setAttribute('y', coordinates.labelCoordinates[1]);
+  const labelContainer = document.createElementNS(svgNs, 'g');
+  labelContainer.setAttributeNS(null, 'class', 'label');
 
-  //const cloneLabelKanji = cloneLabel.querySelector('.label-kanji');
-  //cloneLabelKanji.setAttribute('id', 'label' + labelId + '-kanji');
-  //cloneLabelKanji.setAttribute('x', coordinates.kanjiCoordinates[0]);
-  //cloneLabelKanji.setAttribute('y', coordinates.kanjiCoordinates[1]);
+  const labelImageBg = document.createElementNS(svgNs, 'image');
+  labelImageBg.setAttributeNS(null, 'class', 'label-content-unselected label-image-bg' + labelId);
+  labelImageBg.setAttributeNS(null, 'id', 'label' + labelId + '-image-bg');
+  labelImageBg.setAttributeNS(null, 'href', 'images/svg/' + labelId + '_label.svg');
+  labelImageBg.setAttributeNS(null, 'x', coordinates.labelCoordinates[0]);
+  labelImageBg.setAttributeNS(null, 'y', coordinates.labelCoordinates[1]);
+  labelContainer.appendChild(labelImageBg);
 
-  //const cloneLabelEnglish = cloneLabel.querySelector('.label-english');
-  //cloneLabelEnglish.setAttribute('id', 'label' + labelId + '-english');
-  //cloneLabelEnglish.setAttribute('x', coordinates.englishCoordinates[0]);
-  //cloneLabelEnglish.setAttribute('y', coordinates.englishCoordinates[1]);
+  const labelKanji = document.createElementNS(svgNs, 'text');
+  labelKanji.setAttributeNS(null, 'class', 'label-content-unselected label-text label-kanji');
+  labelKanji.setAttributeNS(null, 'id', 'label' + labelId + '-kanji');
+  labelKanji.setAttributeNS(null, 'x', coordinates.kanjiCoordinates[0]);
+  labelKanji.setAttributeNS(null, 'y', coordinates.kanjiCoordinates[1]);
+  labelKanji.setAttributeNS(null, 'fill', 'white');
+  labelKanji.innerHTML = 'いい';
+  labelContainer.appendChild(labelKanji);
+
+  const labelEnglish = document.createElementNS(svgNs, 'text');
+  labelEnglish.setAttributeNS(null, 'class', 'label-content-unselected label-text label-english');
+  labelEnglish.setAttributeNS(null, 'id', 'label' + labelId + '-english');
+  labelEnglish.setAttributeNS(null, 'x', coordinates.englishCoordinates[0]);
+  labelEnglish.setAttributeNS(null, 'y', coordinates.englishCoordinates[1]);
+  labelEnglish.setAttributeNS(null, 'fill', 'black');
+  labelEnglish.innerHTML = 'hello';
+  labelContainer.appendChild(labelEnglish);
 
   const cursorContainer = document.getElementById('cursor-container'); 
-  cursorContainer.appendChild(useLabelClip);
+  cursorContainer.appendChild(labelClip);
+  cursorContainer.appendChild(labelContainer);
 }
 
 placeLabel(0, coordinates0);
