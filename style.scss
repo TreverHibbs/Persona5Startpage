@@ -5,7 +5,7 @@
 
 html, body {
 /*  background: no-repeat center url("images/map.png"); */
-    background-color: #de0916;
+    background-color: #bf0f10;
     font-family: myFont, "Liberaion Sans", sans-serif;
     margin: 0;
     height: 100%;
@@ -18,10 +18,17 @@ html, body {
   gap: 0px 0px;
   grid-template-areas:
     ".";
-  justify-items: center;
   width: 100%;
   /* 1500 because that is the width of the image file */
   height: 100%;
+}
+
+.flex-container {
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 $image-width: 1450px;
@@ -30,7 +37,6 @@ $image-width: 1450px;
   height: 100vh;
   width: 100%;
   justify-self: center;
-  max-width: 1500px;
 }
 
 .map-image {
@@ -70,19 +76,141 @@ $image-width: 1450px;
   font-size: large;
 }
 .label-kanji {
+  font-size: x-large;
+}
+
+/* label kanji text */
+#label0-kanji {
+  font-size: 22px;
+}
+#label1-kanji {
+  font-size: x-large;
+}
+#label9-kanji {
+  font-size: large;
+}
+#label10-kanji {
+  font-size: large;
+}
+#label14-kanji {
+  font-size: large;
+}
+#label18-kanji {
   font-size: xx-large;
+}
+#label24-kanji {
+  font-size: large;
 }
 
 /* link images */
-//#tsukishima {
-//  transform-origin: 85% 60%;
-//}
-//
-//#city0-image {
-//  transform-origin: 680px 418px;
-//}
-//
-//#city1-image {
-//  transform-origin: 15% 30%;
-//}
+#city0-image {
+  transform-origin: 680px 418px;
+}
+#city1-image {
+  transform-origin: 246px 219px;
+}
+#city2-image {
+  transform-origin: 457px 262px;
+}
+#city3-image {
+  transform-origin: 582px 182px;
+}
+#city4-image {
+  transform-origin: 622px 263px;
+}
 
+#city5-image {
+  transform-origin: 890px 251px;
+}
+#city6-image {
+  transform-origin: 948px 175px;
+}
+#city7-image {
+  transform-origin: 1071px 264px;
+}
+#city8-image {
+  transform-origin: 1138px 156px;
+}
+#city9-image {
+  transform-origin: 154px 384px;
+}
+#city10-image {
+  transform-origin: 295px 343px;
+}
+#city11-image {
+  transform-origin: 461px 364px;
+}
+#city12-image {
+  transform-origin: 515px 463px;
+}
+#city13-image {
+  transform-origin: 797px 356px;
+}
+#city14-image {
+  transform-origin: 875px 428px;
+}
+#city15-image {
+  transform-origin: 973px 365px;
+}
+#city16-image {
+  transform-origin: 1157px 361px;
+}
+#city17-image {
+  transform-origin: 1402px 410px;
+}
+#city18-image {
+  transform-origin: 241px 519px;
+}
+#city19-image {
+  transform-origin: 805px 510px;
+}
+#city20-image {
+  transform-origin: 1126px 495px;
+}
+#city21-image {
+  transform-origin: 1283px 566px;
+}
+#city22-image {
+  transform-origin: 130px 703px;
+}
+#city23-image {
+  transform-origin: 568px 860px;
+}
+#city24-image {
+  transform-origin: 1211px 779px;
+}
+
+.kasumi-image-container {
+  display: none;
+  justify-self: center;
+}
+.kasumi-image {
+  width: auto;
+  height: 50vh;
+  margin: 20px 0 20px 0;
+  display: none;
+}
+
+@media (min-width: 1930px) and (orientation: landscape) { 
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ". . .";
+    width: 100%;
+    /* 1500 because that is the width of the image file */
+    height: 100%;
+  }
+
+  .kasumi-image-container {
+    //display: block;
+    display: grid;
+  }
+  .kasumi-image {
+    //display: block;
+    align-self: center;
+    display: block;
+  }
+}
