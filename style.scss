@@ -59,12 +59,26 @@ $image-width: 1450px;
   //visibility: hidden;
 }
 
-.label-content-unselected {
+.label-image-bg {
   mix-blend-mode: normal;
 }
 
 .label-content-selected {
   mix-blend-mode: difference;
+}
+.label-content-unselected {
+  mix-blend-mode: normal;
+}
+
+.label-image-bg-alt {
+  mix-blend-mode: difference;
+}
+
+.visible {
+  visibility: visible;
+}
+.hidden {
+  visibility: hidden;
 }
 
 .label-text {
