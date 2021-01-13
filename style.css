@@ -23,15 +23,16 @@ html, body {
 }
 
 .svg {
-  height: 900px;
-  width: 1450px;
-  place-self: center;
+  height: 100vh;
+  width: 100%;
+  justify-self: center;
   max-width: 1500px;
 }
 
 .map-image {
-  width: 1450px;
+  width: 1500px;
   height: auto;
+  max-width: 1500px;
 }
 
 #cursor-container {
@@ -50,17 +51,8 @@ html, body {
   mix-blend-mode: difference;
 }
 
-#label0-english {
-  transform-origin: center;
-  transform: rotate(-3deg);
-}
-
-#label0-kanji {
-  transform-origin: center;
-  transform: rotate(-3deg);
-}
-
 .label-text {
+  text-anchor: middle;
   pointer-events: none;
   font-variant-caps: small-caps;
   font-weight: bolder;
@@ -72,12 +64,5 @@ html, body {
 }
 
 /* link images */
-#tsukishima {
-  transform-origin: 85% 60%;
-}
-
-.city-image {
-  transform-origin: 45% 50%;
-}
 
 /*# sourceMappingURL=style.css.map */

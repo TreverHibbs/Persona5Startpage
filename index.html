@@ -12,17 +12,17 @@
   </head>
   <body>
     <div class="grid-container">
-      <svg id="main-svg" class="svg" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 1500 1000" id="main-svg" class="svg" xmlns="http://www.w3.org/2000/svg">
         xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs id="label-defs">
           <image class="label-clip-bg" clip-path="url(#myClipPath)" />
           <g class="label" >
             <image class="label-content-unselected label-image-bg" id="label-image-bg" />
-            <text class="label-content-unselected label-text label-kanji" fill='white'>結構</text>
+            <text class="label-content-autolected label-text label-kanji" fill='white'>結構</text>
             <text class="label-content-unselected label-text label-english" fill='black'>title</text>
           </g>
         </defs>
-        <image class="map-image" href="images/map.png" visibility='visible'/>
+        <image preserveAspectRatio="xMidYMid meet" class="map-image" height="auto" href="images/map.png" visibility='visible'/>
         <mask id="myMask">
           <!-- Everything under a white pixel will be visible -->
           <rect x=0 y=0 width="100%" height="100%" fill="white" />
