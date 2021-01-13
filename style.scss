@@ -200,12 +200,12 @@ $image-width: 1450px;
 }
 .kasumi-image {
   width: auto;
-  height: 50vh;
+  height: 60vh;
   margin: 20px 0 20px 0;
   display: none;
 }
 
-@media (min-width: 1930px) and (orientation: landscape) { 
+@media (min-width: 2500px) and (orientation: landscape) { 
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
