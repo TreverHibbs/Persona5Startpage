@@ -3,12 +3,13 @@
   src: url(./fonts/ttf/p5hatty.ttf);
 }
 
-html, body {
-/*  background: no-repeat center url("images/map.png"); */
-    background-color: #bf0f10;
-    font-family: myFont, "Liberaion Sans", sans-serif;
-    margin: 0;
-    height: 100%;
+html,
+body {
+  /*  background: no-repeat center url("images/map.png"); */
+  background-color: #bf0f10;
+  font-family: myFont, "Liberaion Sans", sans-serif;
+  margin: 0;
+  height: 100%;
 }
 
 .grid-container {
@@ -16,8 +17,7 @@ html, body {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
-  grid-template-areas:
-    ".";
+  grid-template-areas: ".";
   width: 100%;
   /* 1500 because that is the width of the image file */
   height: 100%;
@@ -40,7 +40,7 @@ $image-width: 1450px;
 }
 
 .map-image {
-  width: 1500px; 
+  width: 1500px;
   height: auto;
   max-width: 1500px;
 }
@@ -52,7 +52,6 @@ $image-width: 1450px;
 .cursor-blue {
   mix-blend-mode: darken;
 }
-
 
 .label {
   //pointer-events: none;
@@ -205,14 +204,13 @@ $image-width: 1450px;
   display: none;
 }
 
-@media (min-width: 2500px) and (orientation: landscape) { 
+@media (min-width: 2500px) and (orientation: landscape) {
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr;
     gap: 0px 0px;
-    grid-template-areas:
-      ". . .";
+    grid-template-areas: ". . .";
     width: 100%;
     /* 1500 because that is the width of the image file */
     height: 100%;

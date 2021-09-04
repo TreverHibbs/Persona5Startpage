@@ -5,8 +5,9 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/http-server",
-    "startSass": "sass --watch style.scss style.css"
+    "startServer": "./node_modules/.bin/http-server",
+    "startSass": "./node_modules/.bin/sass --watch style.scss style.css",
+    "start": "./node_modules/.bin/concurrently \"npm run startServer\" \"npm run startSass\""
   },
   "repository": {
     "type": "git",
@@ -19,9 +20,11 @@
   },
   "homepage": "https://github.com/TreverHibbs/josh#readme",
   "devDependencies": {
-    "http-server": "^0.12.3"
+    "concurrently": "^6.2.1",
+    "http-server": "^0.12.3",
+    "sass": "^1.39.0"
   },
   "compilerOptions": {
-      "checkJs": true
+    "checkJs": true
   }
 }

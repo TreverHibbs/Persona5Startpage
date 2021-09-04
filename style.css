@@ -2,7 +2,8 @@
   font-family: myFont;
   src: url(./fonts/ttf/p5hatty.ttf);
 }
-html, body {
+html,
+body {
   /*  background: no-repeat center url("images/map.png"); */
   background-color: #bf0f10;
   font-family: myFont, "Liberaion Sans", sans-serif;
