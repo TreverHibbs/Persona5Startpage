@@ -13,13 +13,20 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.2fr 1.8fr;
+  grid-template-columns: 2fr;
+  grid-template-rows: 0.2fr 0.15fr 1.1fr;
   gap: 0px 0px;
-  grid-template-areas: "search" "map";
-  width: 100%;
-  /* 1500 because that is the width of the image file */
-  height: 100%;
+  height: 100vh;
+  margin: 0px;
+  overflow: auto;
+}
+
+.map {
+  grid-area: 2/2/4/3;
+}
+
+.search {
+  grid-area: 1/2/3/3;
 }
 
 .flex-container {
@@ -30,24 +37,29 @@ body {
   flex-direction: row;
 }
 
-.search {
-  height: 10vh;
-  grid-area: search;
-  justify-self: center;
+.search-svg {
+  z-index: 3;
+}
+
+.search-container {
+  height: 100%;
+  width: 100%;
   display: flex;
-  justify-content: center;
 }
 
 .search-svg {
   height: 100%;
-  width: 33%;
+}
+
+.search-foreign-obj {
+  display: flex;
+  align-items: center;
 }
 
 .svg {
-  height: 90vh;
+  height: 100%;
   width: 100%;
   justify-self: center;
-  grid-area: map;
 }
 
 .map-image {
@@ -233,7 +245,7 @@ body {
 .kasumi-image-container {
   display: none;
   justify-self: center;
-  grid-row: 1/3;
+  grid-row: 1/4;
 }
 
 .kasumi-image {
@@ -247,11 +259,26 @@ body {
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 0.2fr 1.8fr;
+    grid-template-rows: 0.2fr 0.18fr 1fr;
     gap: 0px 0px;
-    grid-template-areas: ". search ." ". map .";
     width: 100%;
     height: 100%;
+  }
+
+  .map {
+    grid-area: 2/2/4/3;
+  }
+
+  .search {
+    grid-area: 1/2/3/3;
+  }
+
+  .kasumi-img1 {
+    grid-area: 1/1/4/2;
+  }
+
+  .kasumi-img2 {
+    grid-area: 1/3/4/4;
   }
 
   .kasumi-image-container {
