@@ -14,7 +14,7 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 2fr;
+  grid-template-columns: 0fr 2fr 0fr;
   grid-template-rows: 0.2fr 0.15fr 1.1fr;
   gap: 0px 0px;
 
